@@ -53,7 +53,7 @@ def report_to_statsd(stat_rows,
     # Report for each row
     for row in stat_rows:
         if row['pxname'] != 'redis':
-          contine
+          continue
         
         path = '.'.join([namespace, row['pxname'], row['svname']])
 
