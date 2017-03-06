@@ -52,6 +52,9 @@ def report_to_statsd(stat_rows,
 
     # Report for each row
     for row in stat_rows:
+        if row['pxname'] != 'redis':
+          contine
+        
         path = '.'.join([namespace, row['pxname'], row['svname']])
 
         # Report each stat that we want in each row
@@ -61,7 +64,6 @@ def report_to_statsd(stat_rows,
                 '%s.%s:%s|g' % (path, stat, val), (host, port))
             stat_count += 1
     return stat_count
-
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(
